@@ -129,7 +129,7 @@ class RiakHttpTransport(RiakTransport) :
           response = self.http_request('PUT', host, port, url, headers, content)
 
         if return_body:
-          return self.parse_body(response, [200, 201, 300])
+          return self.parse_body(response, [200, 201, 300, 204])
         else:
           self.check_http_code(response, [204])
           return None
