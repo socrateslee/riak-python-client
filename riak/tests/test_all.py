@@ -468,7 +468,7 @@ class BaseTestCase(object):
     def test_store_binary_object_from_file(self):
         bucket = self.client.bucket('bucket')
         rand = str(self.randint())
-        obj = bucket.new_binary_from_file('foo_from_file', os.path.dirname(__file__) + "/test_all.py")
+        obj = bucket.new_binary_from_file('foo_from_file', os.path.dirname(os.path.abspath(__file__)) + "/test_all.py")
         obj.store()
         obj = bucket.get_binary('foo_from_file')
         self.assertNotEqual(obj.get_data(), None)
@@ -477,7 +477,7 @@ class BaseTestCase(object):
     def test_store_binary_object_from_file_should_use_default_mimetype(self):
         bucket = self.client.bucket('bucket')
         rand = str(self.randint())
-        obj = bucket.new_binary_from_file('foo_from_file', os.path.dirname(__file__) + '/../../THANKS')
+        obj = bucket.new_binary_from_file('foo_from_file', os.path.dirname(os.path.abspath(__file__)) + '/../../THANKS')
         obj.store()
         obj = bucket.get_binary('foo_from_file')
         self.assertEqual(obj.get_content_type(), 'application/octet-stream')
@@ -783,7 +783,7 @@ class RiakHttpTransportTestCase(BaseTestCase, MapReduceAliasTestMixIn, unittest.
         if SKIP_LUWAK:
             return True
 
-        file = os.path.dirname(__file__) + "/test_all.py"
+        file = os.path.dirname(os.path.abspath(__file__)) + "/test_all.py"
         with open(file, "r") as input_file:
             data = input_file.read()
 
@@ -794,7 +794,7 @@ class RiakHttpTransportTestCase(BaseTestCase, MapReduceAliasTestMixIn, unittest.
         if SKIP_LUWAK:
             return True
 
-        file = os.path.dirname(__file__) + "/test_all.py"
+        file = os.path.dirname(os.path.abspath(__file__)) + "/test_all.py"
         with open(file, "r") as input_file:
             data = input_file.read()
 
@@ -808,7 +808,7 @@ class RiakHttpTransportTestCase(BaseTestCase, MapReduceAliasTestMixIn, unittest.
         if SKIP_LUWAK:
             return True
 
-        file = os.path.dirname(__file__) + "/test_all.py"
+        file = os.path.dirname(os.path.abspath(__file__)) + "/test_all.py"
         with open(file, "r") as input_file:
             data = input_file.read()
 
