@@ -16,7 +16,7 @@ Documentation for Riak is available at http://wiki.basho.com/How-Things-Work.htm
 Install
 =======
 
-The recommended version of Python for use with this client is Python 2.7.
+The recommended version of Python for use with this client is Python 2.5.
 
 You must have `Protocol Buffers`_ installed before you can install the Riak Client. From the Riak Python Client root directory, execute::
 
